@@ -8,6 +8,13 @@ const authRoutes = require('./routes/authRoutes');
 
 dotenv.config();
 
+const missingEnv = ['MONGO_URI', 'JWT_SECRET'].filter((key) => !process.env[key]);
+if (missingEnv.length > 0) {
+  console.error(`Erreur : variables d'environnement manquantes => ${missingEnv.join(', ')}`);
+  console.error('Ajoute-les dans Render sous Environment > Environment Variables.');
+  process.exit(1);
+}
+
 const app = express();
 const PORT = process.env.PORT || 5000;
 
