@@ -11,12 +11,12 @@ services:
         value: 10000
       - key: NODE_ENV
         value: production
+      # MONGO_URI and JWT_SECRET were removed from the repository for security.
+      # Add them in the Render dashboard: Service > Environment > Environment Variables
       - key: MONGO_URI
-        # WARNING: secret stored in repo (you asked for this)
-        value: "mongodb+srv://cheikhahmadou92_db_user:Mbacke1@fadjmacluster.fvlhh0g.mongodb.net/fadjma?retryWrites=true&w=majority"
+        value: "<SET_IN_RENDER_DASHBOARD>"
       - key: JWT_SECRET
-        # WARNING: secret stored in repo (you asked for this)
-        value: "5f8d2b9a8c4e7f6a3d2c1b0e9a7f6d4c3b2a190f8e7d6c5b4a3f2e1d0c9b8a7"
+        value: "<SET_IN_RENDER_DASHBOARD>"
       - key: FRONTEND_URL
         value: "https://mearn-fadjma.onrender.com"
     autoDeploy: true
