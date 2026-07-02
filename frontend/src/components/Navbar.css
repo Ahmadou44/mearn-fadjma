@@ -1,0 +1,125 @@
+:root {
+  --primary: #00a86b;
+  --background: #ffffff;
+  --text: #1f2937;
+  --muted: #6b7280;
+  --border: #e5e7eb;
+}
+
+.fm-navbar {
+  background: var(--background);
+  border-bottom: 1px solid var(--border);
+  position: sticky;
+  top: 0;
+  z-index: 20;
+}
+
+.fm-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 14px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.fm-logo {
+  color: var(--primary);
+  font-size: 1.4rem;
+  font-weight: 800;
+  text-decoration: none;
+}
+
+.fm-logo span {
+  color: #111827;
+}
+
+.fm-links {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.fm-link {
+  color: var(--text);
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 160ms ease;
+}
+
+.fm-link:hover,
+.fm-link.active {
+  color: var(--primary);
+}
+
+.fm-burger {
+  display: none;
+  border: none;
+  background: transparent;
+  width: 38px;
+  height: 38px;
+  padding: 0;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+}
+
+.fm-burger span {
+  width: 100%;
+  height: 3px;
+  background: var(--text);
+  border-radius: 999px;
+  transition: transform 200ms ease, opacity 200ms ease;
+}
+
+.fm-burger.open span:nth-child(1) {
+  transform: translateY(10px) rotate(45deg);
+}
+
+.fm-burger.open span:nth-child(2) {
+  opacity: 0;
+}
+
+.fm-burger.open span:nth-child(3) {
+  transform: translateY(-10px) rotate(-45deg);
+}
+
+@media (max-width: 860px) {
+  .fm-burger {
+    display: flex;
+  }
+
+  .fm-links {
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 100vh;
+    width: 240px;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: start;
+    padding: 88px 20px 20px;
+    gap: 24px;
+    background: var(--background);
+    box-shadow: -12px 0 32px rgba(15, 23, 42, 0.12);
+    transform: translateX(100%);
+    transition: transform 200ms ease;
+  }
+
+  .fm-links.open {
+    transform: translateX(0);
+  }
+}
+
+@media (max-width: 520px) {
+  .fm-container {
+    padding: 14px 18px;
+  }
+
+  .fm-links {
+    width: 100%;
+    padding-right: 12px;
+  }
+}
