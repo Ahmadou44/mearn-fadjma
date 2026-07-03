@@ -7,10 +7,7 @@ const connectDB = async () => {
   }
 
   try {
-    await mongoose.connect(uri, {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-    });
+    await mongoose.connect(uri);
     console.log('MongoDB Connecté au Cloud Atlas !');
   } catch (error) {
     console.error('Erreur de connexion MongoDB :', error.message);
