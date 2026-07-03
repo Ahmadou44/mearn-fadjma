@@ -25,9 +25,12 @@ app.use('/api/medicaments', medicamentRoutes);
 
 if (process.env.NODE_ENV === 'production') {
   app.use(express.static(path.join(__dirname, '../frontend/dist')));
-  // use '/*' instead of '*' to avoid path-to-regexp parsing errors on some Node/express versions
-  app.get('/*', (req, res) => {
-    res.sendFile(path.join(__dirname, '../frontend/dist/index.html'));
+  // Serve index.html for non-API GET requests (avoid path-to-regexp wildcard issues)
+  app.use((req, res, next) => {
+    if (req.method === 'GET' && !req.path.startsWith('/api')) {
+      return res.sendFile(path.join(__dirname, '../frontend/dist/index.html'));
+    }
+    next();
   });
 }
 app.get('/', (req, res) => {
